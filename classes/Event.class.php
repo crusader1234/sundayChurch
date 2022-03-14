@@ -27,6 +27,26 @@ class Event extends Dbh{
         }
 
 
+        public function AllUpcomingEvents()
+        {
+          try
+          {
+    
+            $sql = "select * from events_view where start_date >= CURRENT_DATE ORDER BY `start_date` ASC";
+            $stmt = $this->connection()->prepare($sql);
+            $stmt->execute();
+            $results = $stmt->fetchAll(PDO::FETCH_OBJ);
+            return $results;
+    
+          }catch(Exception $e)
+          {
+
+            throw new Exception($e->getMessage());   
+          }	         
+        
+        }
+
+
 
  // add new group
  public function NewEvent($groupid,$event_name,$description,$start_date,$start_time,$end_date,$end_time,$status)

@@ -152,7 +152,7 @@ public function LoginUser($email,$password)
       session_start();
       $_SESSION['userid'] = $result->userid;
       $_SESSION['email'] = $result->email;
-      //$_SESSION['username'] = $result->username;
+      $_SESSION['username'] = $result->username;
       $_SESSION['role'] = $result->user_role;
       return true;
 
